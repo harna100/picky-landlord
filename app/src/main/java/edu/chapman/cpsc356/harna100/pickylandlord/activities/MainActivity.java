@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		getReferences();
-		showFragment(new CrimeFragment());
+		showFragment(CrimeFragment.NewInstance("Hello World", true));
 	}
 
 	private void showFragment(Fragment fragment) {
