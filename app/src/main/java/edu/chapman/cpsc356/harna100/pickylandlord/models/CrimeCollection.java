@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CrimeCollection {
 	private List<CrimeModel> crimes;
-	private CrimeCollection singleton;
+	private static CrimeCollection singleton;
 
 	private CrimeCollection(){
 		crimes = new ArrayList<>();
@@ -36,7 +36,7 @@ public class CrimeCollection {
 	}
 
 
-	public CrimeCollection getInstance(){
+	public static CrimeCollection getInstance(){
 		if(singleton == null){
 			singleton = new CrimeCollection();
 		}
