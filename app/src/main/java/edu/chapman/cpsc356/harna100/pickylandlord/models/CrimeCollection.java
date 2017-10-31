@@ -39,4 +39,8 @@ public class CrimeCollection {
 
 		return singleton;
 	}
+
+	public List<CrimeModel> getCrimes() {
+		return crimes;
+	}
 }

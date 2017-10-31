@@ -1,6 +1,7 @@
 package edu.chapman.cpsc356.harna100.pickylandlord.models;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import java.util.UUID;
 
@@ -38,5 +39,10 @@ public class CrimeModel {
 
 	public DateTime getCreationDate() {
 		return creationDate;
+	}
+
+	@Override
+	public String toString() {
+		return title + " : " + (solved ? "Solved": "Unsolved") + " : " + creationDate.toString(DateTimeFormat.longDateTime());
 	}
 }
