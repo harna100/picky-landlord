@@ -3,10 +3,6 @@ package edu.chapman.cpsc356.harna100.pickylandlord.models;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Paul-HP on 10/30/2017.
- */
-
 public class CrimeCollection {
 	private List<CrimeModel> crimes;
 	private static CrimeCollection singleton;

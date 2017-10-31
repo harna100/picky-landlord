@@ -8,22 +8,23 @@ import android.widget.FrameLayout;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 
-import edu.chapman.cpsc356.harna100.pickylandlord.fragments.CrimeFragment;
 
-public class MainActivity extends AppCompatActivity {
+public abstract class SingleFragmentActivity extends AppCompatActivity {
+
+	protected abstract Fragment getFragment();
 
 	private FrameLayout fl_fragmentContainer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_single_fragment);
 		getReferences();
-		showFragment(CrimeFragment.NewInstance("Hello World", true));
+		showFragment(getFragment());
+//		showFragment(CrimeFragment.NewInstance("Hello World", true));
 	}
 
 	private void showFragment(Fragment fragment) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
 		ft.replace(R.id.fl_fragment_container, fragment);
 		ft.addToBackStack(null);
 		ft.commit();
