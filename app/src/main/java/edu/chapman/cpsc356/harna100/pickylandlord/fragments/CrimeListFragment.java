@@ -14,10 +14,11 @@ import java.util.List;
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
+import android.support.v7.widget.RecyclerView;
 
 public class CrimeListFragment extends Fragment {
 	private List<CrimeModel> crimes;
-	private ListView lv_listOfCrimes;
+	private RecyclerView rv_listOfCrimes;
 
 	public static CrimeListFragment NewInstance(){
 		CrimeListFragment cfl = new CrimeListFragment();
@@ -36,10 +37,10 @@ public class CrimeListFragment extends Fragment {
 	}
 
 	private void setList() {
-		lv_listOfCrimes.setAdapter(new ArrayAdapter(getContext() ,android.R.layout.simple_list_item_1, crimes));
+
 	}
 
 	public void getReferences(View v){
-		lv_listOfCrimes = v.findViewById(R.id.lv_listOfCrimes);
+		rv_listOfCrimes = v.findViewById(R.id.rv_listOfCrimes);
 	}
 }
