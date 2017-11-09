@@ -1,16 +1,19 @@
 package edu.chapman.cpsc356.harna100.pickylandlord.adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
+import edu.chapman.cpsc356.harna100.pickylandlord.activities.CrimeActivity;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
 
@@ -46,6 +49,7 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
 		private CrimeModel cm;
 		private TextView tv_title;
 		private CheckBox cb_cellSolved;
+		private RelativeLayout rl_crimeCell;
 
 		public CrimeViewHolder(View itemView) {
 			super(itemView);
@@ -56,11 +60,26 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
 		private void getReferences(View itemView) {
 			tv_title = itemView.findViewById(R.id.tv_cellTitle);
 			cb_cellSolved = itemView.findViewById(R.id.cb_cellSolved);
+			rl_crimeCell = itemView.findViewById(R.id.rl_crimeCell);
 		}
 
 		public void setCrimeModel(CrimeModel toSet){
 			cm = toSet;
 			setLayout();
+			setListeners();
+		}
+
+		private void setListeners() {
+			rl_crimeCell.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(v.getContext(), CrimeActivity.class);
+					intent.putExtra("crime_title", cm.getTitle());
+					intent.putExtra("crime_solved", cm.isSolved());
+					intent.putExtra("crime_date", cm.getCreationDate().toString());
+					v.getContext().startActivity(intent);
+				}
+			});
 		}
 
 		private void setLayout(){

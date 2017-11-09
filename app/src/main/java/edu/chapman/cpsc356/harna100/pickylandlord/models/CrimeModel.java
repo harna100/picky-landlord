@@ -10,6 +10,7 @@ public class CrimeModel {
 	private boolean solved;
 	private String id;
 	private DateTime creationDate;
+	private String date;
 
 
 	public CrimeModel() {
@@ -44,5 +45,9 @@ public class CrimeModel {
 	@Override
 	public String toString() {
 		return title + " : " + (solved ? "Solved": "Unsolved") + " : " + creationDate.toString(DateTimeFormat.longDateTime());
+	}
+
+	public void setDate(String date) {
+		creationDate = DateTime.parse(date);
 	}
 }

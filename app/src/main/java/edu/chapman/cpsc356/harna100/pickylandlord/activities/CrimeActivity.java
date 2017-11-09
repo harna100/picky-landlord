@@ -8,6 +8,10 @@ public class CrimeActivity extends SingleFragmentActivity {
 
 	@Override
 	protected Fragment getFragment() {
-		return CrimeFragment.NewInstance("",false);
+		String title = getIntent().getExtras().getString("crime_title");
+		boolean solved = getIntent().getExtras().getBoolean("crime_solved");
+		String date = getIntent().getExtras().getString("crime_date");
+
+		return CrimeFragment.NewInstance(title, solved, date);
 	}
 }

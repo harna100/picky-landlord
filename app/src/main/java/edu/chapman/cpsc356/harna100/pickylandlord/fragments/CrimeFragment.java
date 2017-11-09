@@ -40,6 +40,19 @@ public class CrimeFragment extends Fragment {
 		return cf;
 	}
 
+	public static CrimeFragment NewInstance(String title, boolean solved, String date){
+		CrimeFragment cf = new CrimeFragment();
+
+		CrimeModel cm = new CrimeModel();
+		cm.setTitle(title);
+		cm.setSolved(solved);
+		cm.setDate(date);
+
+
+		cf.setCrimeModel(cm);
+		return cf;
+	}
+
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
