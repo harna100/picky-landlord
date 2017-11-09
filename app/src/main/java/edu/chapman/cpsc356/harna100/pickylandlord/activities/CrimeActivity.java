@@ -6,13 +6,18 @@ import edu.chapman.cpsc356.harna100.pickylandlord.fragments.CrimeFragment;
 
 public class CrimeActivity extends SingleFragmentActivity {
 
+	public static final String EXTRA_CRIME_ID = "crime_id";
+	public static final String EXTRA_CRIME_TITLE = "crime_title";
+	public static final String EXTRA_CRIME_SOLVED = "crime_solved";
+	public static final String EXTRA_CRIME_DATE = "crime_date";
 	@Override
 	protected Fragment getFragment() {
-		/*String title = getIntent().getExtras().getString("crime_title");
-		boolean solved = getIntent().getExtras().getBoolean("crime_solved");
-		String date = getIntent().getExtras().getString("crime_date");
+		return CrimeFragment.NewInstance(getIntent().getExtras().getString(CrimeActivity.EXTRA_CRIME_ID));
+	}
 
-		return CrimeFragment.NewInstance(title, solved, date);*/
-		return CrimeFragment.NewInstance(getIntent().getExtras().getInt("crime_position"));
+	@Override
+	public void onBackPressed() {
+		// fragment handles the keyboard being open
+		finish();
 	}
 }

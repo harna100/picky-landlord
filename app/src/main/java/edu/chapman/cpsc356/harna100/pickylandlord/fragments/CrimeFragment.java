@@ -15,7 +15,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
@@ -58,6 +57,15 @@ public class CrimeFragment extends Fragment {
 		CrimeFragment cf = new CrimeFragment();
 
 		CrimeModel cm = CrimeCollection.getInstance().getCrimes().get(position);
+
+		cf.setCrimeModel(cm);
+		return cf;
+	}
+
+	public static CrimeFragment NewInstance(String crimeId){
+		CrimeFragment cf = new CrimeFragment();
+
+		CrimeModel cm = CrimeCollection.getInstance().getCrime(crimeId);
 
 		cf.setCrimeModel(cm);
 		return cf;
@@ -114,6 +122,7 @@ public class CrimeFragment extends Fragment {
 			@Override
 			public void afterTextChanged(Editable s) {
 				Log.d(TAG, "afterTextChanged: Text Changed to: " + s.toString());
+				crimeModel.setTitle(s.toString());
 			}
 		});
 	}
