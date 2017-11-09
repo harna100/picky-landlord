@@ -14,6 +14,7 @@ import java.util.List;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 import edu.chapman.cpsc356.harna100.pickylandlord.activities.CrimeActivity;
+import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
 
@@ -34,14 +35,15 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
 
 	@Override
 	public void onBindViewHolder(CrimeViewHolder holder, int position) {
-		CrimeModel cm = crimeModelList.get(position);
+//		CrimeModel cm = crimeModelList.get(position);
+		CrimeModel cm = CrimeCollection.getInstance().getCrimes().get(position);
 		holder.setCrimeModel(cm);
 	}
 
 	@Override
 	public int getItemCount() {
 		// TODO: figure out if need to be calling the singleton instead of passing its list in the constructor
-		return crimeModelList.size();
+		return CrimeCollection.getInstance().getCrimes().size();
 	}
 
  	class CrimeViewHolder extends RecyclerView.ViewHolder{
@@ -74,9 +76,10 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(v.getContext(), CrimeActivity.class);
-					intent.putExtra("crime_title", cm.getTitle());
-					intent.putExtra("crime_solved", cm.isSolved());
-					intent.putExtra("crime_date", cm.getCreationDate().toString());
+//					intent.putExtra("crime_title", cm.getTitle());
+//					intent.putExtra("crime_solved", cm.isSolved());
+//					intent.putExtra("crime_date", cm.getCreationDate().toString());
+					intent.putExtra("crime_position", CrimeViewHolder.this.getAdapterPosition());
 					v.getContext().startActivity(intent);
 				}
 			});

@@ -36,6 +36,12 @@ public class CrimeListFragment extends Fragment {
 		return v;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		rv_listOfCrimes.getAdapter().notifyDataSetChanged();
+	}
+
 	private void setList() {
 		rv_listOfCrimes.setAdapter(new CrimeListAdapter(crimes));
 		rv_listOfCrimes.setLayoutManager(new LinearLayoutManager(getContext()));

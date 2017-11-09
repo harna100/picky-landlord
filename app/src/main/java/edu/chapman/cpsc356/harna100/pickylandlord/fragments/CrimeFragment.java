@@ -18,6 +18,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
+import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
 
@@ -48,6 +49,15 @@ public class CrimeFragment extends Fragment {
 		cm.setSolved(solved);
 		cm.setDate(date);
 
+
+		cf.setCrimeModel(cm);
+		return cf;
+	}
+
+	public static CrimeFragment NewInstance(int position){
+		CrimeFragment cf = new CrimeFragment();
+
+		CrimeModel cm = CrimeCollection.getInstance().getCrimes().get(position);
 
 		cf.setCrimeModel(cm);
 		return cf;
