@@ -17,9 +17,11 @@ import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
  */
 
 public class CrimeListActivity extends SingleFragmentActivity {
+	private CrimeListFragment crimeListFragment;
 	@Override
 	protected Fragment getFragment() {
-		return CrimeListFragment.NewInstance();
+		crimeListFragment = CrimeListFragment.NewInstance();
+		return crimeListFragment;
 	}
 
 	@Override
@@ -35,6 +37,12 @@ public class CrimeListActivity extends SingleFragmentActivity {
 			case R.id.menu_add_crime:
 				CrimeCollection.getInstance().getCrimes().add(0, new CrimeModel());
 				startActivity(CrimeActivity.BuildIntent(this,CrimeCollection.getInstance().getCrimes().get(0)));
+				return true;
+			case R.id.menu_solve_all:
+				for (CrimeModel crimeModel : CrimeCollection.getInstance().getCrimes()) {
+					crimeModel.setSolved(true);
+				}
+				crimeListFragment.notifyDataChanged();
 				return true;
 			default:
 				return false;

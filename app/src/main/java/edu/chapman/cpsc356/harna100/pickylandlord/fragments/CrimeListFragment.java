@@ -50,4 +50,8 @@ public class CrimeListFragment extends Fragment {
 	public void getReferences(View v){
 		rv_listOfCrimes = v.findViewById(R.id.rv_listOfCrimes);
 	}
+
+	public void notifyDataChanged(){
+		rv_listOfCrimes.getAdapter().notifyDataSetChanged();
+	}
 }
