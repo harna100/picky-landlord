@@ -2,4 +2,5 @@
     <string name="app_name">Picky Landlord</string>
     <string name="crime_title">Crime Title</string>
     <string name="solved">Solved</string>
+    <string name="add_crime">Add Crime</string>
 </resources>
