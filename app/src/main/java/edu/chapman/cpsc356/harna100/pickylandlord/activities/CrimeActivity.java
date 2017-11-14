@@ -1,5 +1,7 @@
 package edu.chapman.cpsc356.harna100.pickylandlord.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.fragments.CrimeFragment;
@@ -19,5 +21,12 @@ public class CrimeActivity extends SingleFragmentActivity {
 	public void onBackPressed() {
 		// fragment handles the keyboard being open
 		finish();
+	}
+
+	public static Intent BuildIntent(Context context, String id) {
+		Intent intent = new Intent(context, CrimeActivity.class);
+		intent.putExtra(CrimeActivity.EXTRA_CRIME_ID, id);
+		return intent;
+
 	}
 }

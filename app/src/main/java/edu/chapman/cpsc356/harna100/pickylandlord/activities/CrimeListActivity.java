@@ -9,6 +9,8 @@ import android.view.MenuItem;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 import edu.chapman.cpsc356.harna100.pickylandlord.fragments.CrimeListFragment;
+import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
+import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
 /**
  * Created by Paul-HP on 10/30/2017.
@@ -31,6 +33,8 @@ public class CrimeListActivity extends SingleFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.menu_add_crime:
+				CrimeCollection.getInstance().getCrimes().add(0, new CrimeModel());
+				startActivity(CrimeActivity.BuildIntent(this,CrimeCollection.getInstance().getCrimes().get(0).getId()));
 				return true;
 			default:
 				return false;
