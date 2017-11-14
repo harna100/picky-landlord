@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.fragments.CrimeFragment;
+import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
 public class CrimeActivity extends SingleFragmentActivity {
 
@@ -23,9 +24,9 @@ public class CrimeActivity extends SingleFragmentActivity {
 		finish();
 	}
 
-	public static Intent BuildIntent(Context context, String id) {
+	public static Intent BuildIntent(Context context, CrimeModel crimeModel) {
 		Intent intent = new Intent(context, CrimeActivity.class);
-		intent.putExtra(CrimeActivity.EXTRA_CRIME_ID, id);
+		intent.putExtra(CrimeActivity.EXTRA_CRIME_ID, crimeModel.getId());
 		return intent;
 
 	}

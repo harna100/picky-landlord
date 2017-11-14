@@ -34,7 +34,7 @@ public class CrimeListActivity extends SingleFragmentActivity {
 		switch (item.getItemId()) {
 			case R.id.menu_add_crime:
 				CrimeCollection.getInstance().getCrimes().add(0, new CrimeModel());
-				startActivity(CrimeActivity.BuildIntent(this,CrimeCollection.getInstance().getCrimes().get(0).getId()));
+				startActivity(CrimeActivity.BuildIntent(this,CrimeCollection.getInstance().getCrimes().get(0)));
 				return true;
 			default:
 				return false;

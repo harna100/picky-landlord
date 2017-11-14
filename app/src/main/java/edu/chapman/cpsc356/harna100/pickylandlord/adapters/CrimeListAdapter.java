@@ -75,7 +75,7 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
 			rl_crimeCell.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					v.getContext().startActivity(CrimeActivity.BuildIntent(v.getContext(), cm.getId()));
+					v.getContext().startActivity(CrimeActivity.BuildIntent(v.getContext(), cm));
 				}
 			});
 		}
