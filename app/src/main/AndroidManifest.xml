@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.CrimeActivity" android:parentActivityName=".activities.CrimeListActivity"/>
+        <activity
+            android:name=".activities.CrimeActivity"
+            android:parentActivityName=".activities.CrimeListActivity"/>
+        <activity android:name=".activities.CrimePagerActivity">
+        </activity>
     </application>
 
 </manifest>
