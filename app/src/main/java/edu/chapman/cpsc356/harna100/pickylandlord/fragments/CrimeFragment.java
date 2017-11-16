@@ -22,6 +22,9 @@ import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
 
 public class CrimeFragment extends Fragment {
+	public static final String ARG_CRIME_ID = "crime_id";
+	public static final String ARG_CRIME_POSITION = "crime_position";
+
 	private final String TAG = "CrimeFragment";
 	private EditText et_title;
 	private CheckBox cb_solved;

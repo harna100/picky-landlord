@@ -14,6 +14,7 @@ import java.util.List;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 import edu.chapman.cpsc356.harna100.pickylandlord.activities.CrimeActivity;
+import edu.chapman.cpsc356.harna100.pickylandlord.activities.CrimePagerActivity;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
@@ -75,7 +76,7 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
 			rl_crimeCell.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					v.getContext().startActivity(CrimeActivity.BuildIntent(v.getContext(), cm));
+					v.getContext().startActivity(CrimePagerActivity.BuildIntent(v.getContext(), getAdapterPosition()));
 				}
 			});
 		}

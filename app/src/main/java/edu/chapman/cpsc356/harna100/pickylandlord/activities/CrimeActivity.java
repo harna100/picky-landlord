@@ -28,6 +28,5 @@ public class CrimeActivity extends SingleFragmentActivity {
 		Intent intent = new Intent(context, CrimeActivity.class);
 		intent.putExtra(CrimeActivity.EXTRA_CRIME_ID, crimeModel.getId());
 		return intent;
-
 	}
 }
