@@ -7,6 +7,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -78,6 +81,7 @@ public class CrimeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_crime, container, false);
+		this.setHasOptionsMenu(true);
 		getReferences(v);
 		setListeners();
 		return v;
@@ -138,5 +142,24 @@ public class CrimeFragment extends Fragment {
 				crimeModel.setSolved(isChecked);
 			}
 		});
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.fragment_crime_detail, menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+			case R.id.menu_delete_crime:
+				CrimeCollection.getInstance().getCrimes().remove(this.crimeModel);
+				getActivity().finish();
+
+				return true;
+			default:
+				return false;
+		}
 	}
 }
