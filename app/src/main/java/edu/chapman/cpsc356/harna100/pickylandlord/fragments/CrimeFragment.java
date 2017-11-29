@@ -1,5 +1,7 @@
 package edu.chapman.cpsc356.harna100.pickylandlord.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
@@ -112,6 +115,18 @@ public class CrimeFragment extends Fragment {
 	private void setListeners(){
 		setTitleChanged();
 		setCheckBoxChanged();
+		setButtonPressed();
+	}
+
+	private void setButtonPressed() {
+		btn_date.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DatePickerDialogFragment frag = DatePickerDialogFragment.NewInstance(crimeModel.getCreationDate());
+				frag.show(getFragmentManager(), null);
+				frag.setTargetFragment(CrimeFragment.this, DatePickerDialogFragment.REQUEST_CODE);
+			}
+		});
 	}
 
 	private void setTitleChanged(){
@@ -160,6 +175,16 @@ public class CrimeFragment extends Fragment {
 				return true;
 			default:
 				return false;
+		}
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == DatePickerDialogFragment.REQUEST_CODE && resultCode == Activity.RESULT_OK){
+			DateTime date = (DateTime) data.getSerializableExtra(DatePickerDialogFragment.EXTRA_DATE);
+			this.crimeModel.setCreationDate(date);
+			setViews();
 		}
 	}
 }

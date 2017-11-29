@@ -50,4 +50,8 @@ public class CrimeModel {
 	public void setDate(String date) {
 		creationDate = DateTime.parse(date);
 	}
+
+	public void setCreationDate(DateTime creationDate) {
+		this.creationDate = creationDate;
+	}
 }
