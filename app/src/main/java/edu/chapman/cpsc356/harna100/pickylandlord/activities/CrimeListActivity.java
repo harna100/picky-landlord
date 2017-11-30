@@ -1,5 +1,6 @@
 package edu.chapman.cpsc356.harna100.pickylandlord.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -43,6 +44,9 @@ public class CrimeListActivity extends SingleFragmentActivity {
 					crimeModel.setSolved(true);
 				}
 				crimeListFragment.notifyDataChanged();
+				return true;
+			case R.id.menu_settings:
+				startActivity(new Intent(this, SettingsActivity.class));
 				return true;
 			default:
 				return false;
