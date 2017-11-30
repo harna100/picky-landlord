@@ -9,4 +9,5 @@
     <string name="add_share_text_here">Add share text here</string>
     <string name="share_settings">Share Settings</string>
     <string name="save">Save</string>
+    <string name="share">Share</string>
 </resources>

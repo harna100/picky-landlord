@@ -12,7 +12,7 @@ import android.widget.Toast;
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
 
 public class SettingsActivity extends AppCompatActivity {
-	private static final String KEY_SHARED_TEXT = "share_text";
+	public static final String KEY_SHARED_TEXT = "share_text";
 
 
 	private EditText et_sharedText;

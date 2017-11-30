@@ -2,7 +2,9 @@ package edu.chapman.cpsc356.harna100.pickylandlord.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -23,6 +25,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
 import edu.chapman.cpsc356.harna100.pickylandlord.R;
+import edu.chapman.cpsc356.harna100.pickylandlord.activities.SettingsActivity;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeCollection;
 import edu.chapman.cpsc356.harna100.pickylandlord.models.CrimeModel;
 
@@ -36,6 +39,7 @@ public class CrimeFragment extends Fragment {
 	private CheckBox cb_solved;
 	private CrimeModel crimeModel;
 	private Button btn_date;
+	private SharedPreferences sharedPref;
 
 	public static CrimeFragment NewInstance(String title, boolean solved){
 		CrimeFragment cf = new CrimeFragment();
@@ -87,7 +91,12 @@ public class CrimeFragment extends Fragment {
 		this.setHasOptionsMenu(true);
 		getReferences(v);
 		setListeners();
+		setupSharedPref();
 		return v;
+	}
+
+	private void setupSharedPref() {
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
 	}
 
 	@Override
@@ -171,7 +180,15 @@ public class CrimeFragment extends Fragment {
 			case R.id.menu_delete_crime:
 				CrimeCollection.getInstance().getCrimes().remove(this.crimeModel);
 				getActivity().finish();
-
+				return true;
+			case R.id.menu_share_crime:
+				Intent shareIntent = new Intent();
+				shareIntent.setAction(Intent.ACTION_SEND);
+				shareIntent.setType("text/plain");
+				String defaultShareText =sharedPref.getString(SettingsActivity.KEY_SHARED_TEXT, "");
+				String toShare = defaultShareText + "\n" + crimeModel.getTitle();
+				shareIntent.putExtra(Intent.EXTRA_TEXT, toShare);
+				startActivity(shareIntent);
 				return true;
 			default:
 				return false;
