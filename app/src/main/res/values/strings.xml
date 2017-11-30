@@ -6,4 +6,7 @@
     <string name="solve_all">Solve All</string>
     <string name="delete_crime">Delete Crime</string>
     <string name="settings">Settings</string>
+    <string name="add_share_text_here">Add share text here</string>
+    <string name="share_settings">Share Settings</string>
+    <string name="save">Save</string>
 </resources>
